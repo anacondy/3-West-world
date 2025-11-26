@@ -8,7 +8,7 @@
     <title>Western World Political Dashboard 2025</title>
 
     <!-- Preconnect for faster loading -->
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com">
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -72,7 +72,6 @@
             background: linear-gradient(120deg, #fff, #aaa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
             letter-spacing: -1px;
             text-transform: uppercase;
         }
@@ -441,7 +440,7 @@
         @media (prefers-reduced-motion: reduce) {
             .info-sidebar,
             .seat-segment,
-            * {
+            .sidebar-close {
                 transition-duration: 0.01ms !important;
                 animation-duration: 0.01ms !important;
             }
@@ -481,12 +480,8 @@
         function debounce(func, wait) {
             let timeout;
             return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
                 clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
+                timeout = setTimeout(() => func(...args), wait);
             };
         }
 
